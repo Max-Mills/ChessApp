@@ -1,20 +1,25 @@
 <template>
   <div class="boardBorder">
     <table class="board">
-      <tr v-for="row in totalTiles" class="row">
-          <td v-for="column in totalTiles" v-bind:id="'tile'+getIndex(row, column)" @click="selectedTile=selected(row,column,pieceLocation,selectedTile)" class= "column">
+      <tr v-for="row in totalTiles" v-bind:key="row" class="row">
+          <td v-for="column in totalTiles"  v-bind:key="column" v-bind:id="'tile'+getIndex(row, column)" @click="selectedTile=selected(row,column,pieceLocation,selectedTile)" class= "column">
             <div :class="{'active': getIndex(row, column) == selectedTile}">
-                <img :src="getPiece(row,column,pieceLocation)" v-bind:id="'img'+getIndex(row, column)">
+                <img v-if="pieceLocation[getIndex(row, column)]" :src="getPiece(row,column,pieceLocation)" v-bind:id="'img'+getIndex(row, column)">
             </div>
           </td>
       </tr>
     </table>
   </div>
-</template>
+</template> 
 
 <script>
 import Board from "../classes/Board.js";
-var board = new Board()
+const waitForBoard = async () => {
+const response = await fetch('http://localhost:8082/board');
+const boardJson = await response.json();
+return boardJson
+}
+var board = new Board(); 
 
 export default {
   data() {
@@ -26,6 +31,9 @@ export default {
       getPiece: board.getPiece.bind({}),
       selected: board.selected.bind({}),
     }
+  },
+  mounted() {
+      waitForBoard().then(data=> {board.setPieceLoc(data); this.pieceLocation = board.pieceLocation})
   }
 }
 </script>

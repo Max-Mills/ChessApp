@@ -1,18 +1,39 @@
 import Piece from './Piece.js'
-import defaultB from '../assets/defaultBoard.json'
 
 export default class Board {
 	constructor() {
 		self = this
-		this.totalTiles = self.buildBoard()
-		this.pieceLocation = defaultB
+		this.pieceLocation = [{}]
+		this.totalTiles = this.buildBoard()
 		this.selectedTile = 65
+		this.currentTurn = "w"
+	}
+
+	setPieceLoc(pl) {
+		this.pieceLocation = pl
+		return this, self
+	}
+
+	changeTurn() {
+		if (this.currentTurn == "w") {
+			this.currentTurn = "b"
+			console.log("turn is black")
+			return this
+		}
+		else if (this.currentTurn == "b") {
+			this.currentTurn = "w"
+			console.log("turn is white")
+			return this
+		}
+		else {
+			console.log("Turn has error")
+		}
 	}
 
 	buildBoard() {
-		self.totalTiles = [...Array(9).keys()]
+		this.totalTiles = [...Array(9).keys()]
 		self.totalTiles.shift()
-		return self.totalTiles
+		return this.totalTiles
 	}
 
 	getIndex(x, y) {
@@ -21,9 +42,12 @@ export default class Board {
 	}
 
 	getPiece(x, y, pl) {
-		var loc=self.getIndex(x,y)
-		var image="src/assets/" + pl[loc]['player'] + pl[loc]['piece'] + ".png"
+		var loc = self.getIndex(x,y)
+		if (pl[loc] != undefined) {
+		var image="http://localhost:8082/assets/" + pl[loc]['player'] + pl[loc]['piece'] + ".png"
 		return image
+		}
+		console.log("page loading")
 	}
 
 	selected(x, y, pl) {
@@ -42,7 +66,8 @@ export default class Board {
 			pl[this.selectedTile]['player']=''
 			}
 			waitForAnimation()
-	        return
+			self.changeTurn()
+			return
 		}
 		if (pl[loc]['piece']!='none') {
 			this.selectedTile = loc
@@ -51,7 +76,7 @@ export default class Board {
 	}
 
 	isValid(select, pl, loc) {
-		if (select != null && loc != select && new Piece(pl[select], pl[loc]).getMovementRules() == true ) {
+		if (select != null && loc != select && new Piece(pl[select], pl[loc]).getMovementRules() == true && pl[select]['player'] == this.currentTurn) {
 			if (pl[select]["piece"] == "knight" || self.checkPath(pl[select], pl[loc]) == true )
 			return true
 		}
@@ -95,5 +120,5 @@ export default class Board {
 				first = false
 			}
 		return valid
-    }
+	}
 }
