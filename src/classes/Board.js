@@ -44,7 +44,7 @@ export default class Board {
 	getPiece(x, y, pl) {
 		var loc = self.getIndex(x,y)
 		if (pl[loc] != undefined) {
-		var image="http://localhost:8082/assets/" + pl[loc]['player'] + pl[loc]['piece'] + ".png"
+		var image="https://chessapp.s3.us-west-2.amazonaws.com/" + pl[loc]['player'] + pl[loc]['piece'] + ".png"
 		return image
 		}
 		console.log("page loading")

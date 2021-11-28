@@ -50,9 +50,11 @@ func main() {
 	//fmt.Println(boardPlacements)
 
 	fmt.Println("Hello")
-	fileServer := http.FileServer(http.Dir("src"))
+	fileServer := http.FileServer(http.Dir("dist"))
+
 	http.Handle("/", fileServer)
 	http.HandleFunc("/board", doBoard)
+	http.Handle("/assets", http.FileServer(http.Dir("src")))
 
 	if err := http.ListenAndServe(":8082", nil); err != nil {
 		log.Fatal(err)

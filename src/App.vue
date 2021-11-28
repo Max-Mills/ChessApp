@@ -48,7 +48,7 @@ img {
 	width: 650px;
 	height: 650px;
 	padding-top: 25px;
-	background-image: url("http://localhost:8082/assets/redmahogany.jpg");
+	background-image: url("https://chessapp.s3.us-west-2.amazonaws.com/redmahogany.jpg");
 	background-repeat: no-repeat;
 	margin-left: auto;
 	margin-right: auto;
@@ -61,7 +61,7 @@ img {
 	width: 600px;
 	height: 600px;
 	border-radius: 2px;
-	background-image: url("http://localhost:8082/assets/whitetiles.jpg");
+	background-image: url("https://chessapp.s3.us-west-2.amazonaws.com/whitetiles.jpg");
 	position: flex;
 	margin-left: auto;
 	margin-right: auto;
@@ -79,11 +79,11 @@ td:hover :not(img) {
 }
 
 table .row:nth-child(odd) .column:nth-child(even) {
-background-image: url("http://localhost:8082/assets/darktiles.jpg");
+background-image: url("https://chessapp.s3.us-west-2.amazonaws.com/darktiles.jpg");
   background-repeat: no-repeat;
 }
 table .row:nth-child(even) .column:nth-child(odd) {
-background-image: url("http://localhost:8082/assets/darktiles.jpg");
+background-image: url("https://chessapp.s3.us-west-2.amazonaws.com/darktiles.jpg");
   background-repeat: no-repeat;
 }
 

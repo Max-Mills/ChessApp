@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img class="logo" alt="Chess Online Logo" src="http://localhost:8082/assets/wpawn.png">
+    <img class="logo" alt="Chess Online Logo" src="https://chessapp.s3.us-west-2.amazonaws.com/wpawn.png">
     <HomePage />
   </div>
 </template>
