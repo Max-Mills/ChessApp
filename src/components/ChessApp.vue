@@ -15,7 +15,7 @@
 <script>
 import Board from "../classes/Board.js";
 const waitForBoard = async () => {
-const response = await fetch('http://localhost:8082/board');
+const response = await fetch('http://54.187.201.89/board');
 const boardJson = await response.json();
 return boardJson
 }

@@ -19,7 +19,7 @@ type tile struct {
 }
 
 func doBoard(w http.ResponseWriter, r *http.Request) {
-	allowedHeaders := "Accept, Content-Type, Content-Length, Accept-Encoding, Authorization,X-CSRF-Token"
+	allowedHeaders := "Accept, Content-Type, Content-Length, Accept-Encoding, Authorization, X-CSRF-Token"
 	w.Header().Set("Content-Type", "application/json")
 	switch r.Method {
 	case "GET":
