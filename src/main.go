@@ -19,13 +19,13 @@ type tile struct {
 }
 
 func doBoard(w http.ResponseWriter, r *http.Request) {
-	allowedHeaders := "Accept, Content-Type, Content-Length, Accept-Encoding, Authorization, X-CSRF-Token"
-	w.Header().Set("Content-Type", "application/json")
+	//allowedHeaders := "Accept, Content-Type, Content-Length, Accept-Encoding, Authorization, X-CSRF-Token"
 	switch r.Method {
 	case "GET":
-		w.Header().Set("Access-Control-Allow-Origin", "*")
-		w.Header().Set("Access-Control-Allow-Headers", allowedHeaders)
-		w.Header().Set("Access-Control-Expose-Headers", "Authorization")
+		w.Header().Set("Content-Type", "application/json")
+		//w.Header().Set("Access-Control-Allow-Origin", "*")
+		//w.Header().Set("Access-Control-Allow-Headers", allowedHeaders)
+		//w.Header().Set("Access-Control-Expose-Headers", "Authorization")
 		jsonFile, err := os.Open("src/assets/session-1234.json")
 		if err != nil {
 			fmt.Println(err)
