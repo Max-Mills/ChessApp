@@ -7,6 +7,7 @@ export default class Board {
 		this.totalTiles = this.buildBoard()
 		this.selectedTile = 65
 		this.currentTurn = "w"
+		this.turnTex = "The turn is white"
 	}
 
 	setPieceLoc(pl) {
@@ -17,12 +18,12 @@ export default class Board {
 	changeTurn() {
 		if (this.currentTurn == "w") {
 			this.currentTurn = "b"
-			console.log("turn is black")
+			this.turnTex = "The turn is black"
 			return this
 		}
 		else if (this.currentTurn == "b") {
 			this.currentTurn = "w"
-			console.log("turn is white")
+			this.turnTex = "The turn is white"
 			return this
 		}
 		else {

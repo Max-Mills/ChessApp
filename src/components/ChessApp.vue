@@ -1,4 +1,6 @@
 <template>
+<div>
+  <h2> {{ turnText }} </h2>
   <div class="boardBorder">
     <table class="board">
       <tr v-for="row in totalTiles" v-bind:key="row" class="row">
@@ -10,12 +12,13 @@
       </tr>
     </table>
   </div>
+</div>
 </template> 
 
 <script>
 import Board from "../classes/Board.js";
 const waitForBoard = async () => {
-const response = await fetch('http://54.187.201.89/board');
+const response = await fetch('http://34.217.12.67/board');
 const boardJson = await response.json();
 return boardJson
 }
@@ -27,6 +30,7 @@ export default {
       pieceLocation: board.pieceLocation,
       totalTiles: board.totalTiles,
       selectedTile: board.selectedTile,
+      turnText: board.turnText,
       getIndex: board.getIndex.bind({}),
       getPiece: board.getPiece.bind({}),
       selected: board.selected.bind({}),
