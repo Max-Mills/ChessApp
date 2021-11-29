@@ -1,5 +1,5 @@
 <template>
-<div>
+ <div>
   <h2> {{ turnText }} </h2>
   <div class="boardBorder">
     <table class="board">
