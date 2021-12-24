@@ -4,7 +4,7 @@
     <p> To get started go to Chess Game </p>
     <div v-if="!$auth.loading">
       <!-- show login when not authenticated -->
-      <button v-if="!$auth.isAuthenticated" @click="login">Log in</button>
+      <button v-if="!$auth.isAuthenticated" @click="loginClick()">Log in</button>
       <!-- show logout when authenticated -->
       <button v-if="$auth.isAuthenticated" @click="logout">Log out</button>
     </div>
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import {login} from '../auth/index'
 export default {
   name: 'HelloWorld',
   props: {
@@ -19,8 +20,8 @@ export default {
   },
   methods: {
     // Log the user in
-    login() {
-      this.$auth.loginWithRedirect();
+    loginClick() {
+      login();
     },
     // Log the user out
     logout() {
