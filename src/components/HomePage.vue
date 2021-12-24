@@ -2,7 +2,7 @@
   <div class="hello">
     <h2> Welcome to Chess Online </h2>
     <button @click="loginClick()">Log in</button>
-    <p> To get started go to Chess Game </p>
+    <p> To get started go to Chess</p>
   </div>
 </template>
 
