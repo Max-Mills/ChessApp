@@ -2,10 +2,7 @@
   <div class="hello">
     <h2> Welcome to Chess Online </h2>
     <p> To get started go to Chess Game </p>
-    <div v-if="!$auth.loading">
-      <!-- show login when not authenticated -->
       <button @click="loginClick()">Log in</button>
-    </div>
   </div>
 </template>
 
