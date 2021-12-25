@@ -49,6 +49,19 @@ func doBoard(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func cors(fs http.Handler) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+
+		c := w.Header().Get("Set-Cookie")
+		c += "; SameSite=lax"
+		w.Header().Set("Set-Cookie", c)
+
+		fs.ServeHTTP(w, r)
+	}
+}
+
 func main() {
 
 	//var boardPlacements []tile
@@ -57,9 +70,9 @@ func main() {
 	//fmt.Println(boardPlacements)
 
 	fmt.Println("Hello")
-	fileServer := http.FileServer(http.Dir("dist"))
 
-	http.Handle("/", fileServer)
+	fs := http.FileServer(http.Dir("dist"))
+	http.Handle("/", cors(fs))
 	http.HandleFunc("/board", doBoard)
 	http.Handle("/assets", http.FileServer(http.Dir("src")))
 
