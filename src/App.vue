@@ -1,8 +1,17 @@
+<script setup>
+import { useAuth0, AuthState } from "./auth/index";
+const { initAuth } = useAuth0(AuthState);
+
+initAuth();
+</script>
+
 <template>
 <div id="app">
   <div id="nav">
     <router-link to="/">Home</router-link> |
-    <router-link to="/chess">Chess Game</router-link> |
+	<div v-if="AuthState.isAuthenticated" >
+    <router-link to="/chess">Chess Game</router-link> | 
+	</div>
     <router-link to="/about">About</router-link>
   </div>
   <router-view />

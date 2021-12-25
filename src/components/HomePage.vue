@@ -1,30 +1,37 @@
+<script setup>
+import { useAuth0, AuthState } from "../auth/index";
+const { login, logout, initAuth } = useAuth0(AuthState);
+
+initAuth();
+</script>
+
 <template>
   <div class="hello">
     <h2> Welcome to Chess Online </h2>
-    <button @click="loginClick()">Log in</button>
     <p> To get started go to Chess</p>
+    <div v-if="!AuthState.loading">
+      <div v-if="!AuthState.isAuthenticated">
+        <button class="lButton" @click="login()">Login</button>
+      </div>
+      <div v-else>
+        <p> Welcome to VueAuth <strong>{{ AuthState.user.name }}</strong></p>
+        <button class="lButton" @click="logout()">Logout</button>
+      </div>
+    </div>
+
+    <div v-else>
+      Loading ...
+    </div>
   </div>
 </template>
 
 <script>
-import {login} from '../auth/index'
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  },
-  methods: {
-    // Log the user in
-    loginClick() {
-      login();
-    },
-    // Log the user out
-    logout() {
-      this.$auth.logout({
-        returnTo: window.location.origin
-      });
+    data() {
+    return {
+      AuthState: AuthState,
     }
-  }
+  },
 }
 </script>
 
