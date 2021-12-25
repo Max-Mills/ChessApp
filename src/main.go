@@ -52,9 +52,9 @@ func doBoard(w http.ResponseWriter, r *http.Request) {
 func cors(fs http.Handler) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 
-		c := w.Header().Get("Set-Cookie")
-		c += "; SameSite=lax"
-		w.Header().Set("Set-Cookie", c)
+		//c := w.Header().Get("Set-Cookie")
+		//c += "SameSite=lax"
+		//w.Header().Set("Set-Cookie", c)
 
 		fs.ServeHTTP(w, r)
 	}
