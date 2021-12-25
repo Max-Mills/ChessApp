@@ -24,6 +24,11 @@ func doBoard(w http.ResponseWriter, r *http.Request) {
 	case "GET":
 		w.Header().Set("Content-Type", "application/json")
 		w.Header().Set("Access-Control-Allow-Origin", "*")
+
+		c := w.Header().Get("Set-Cookie")
+		c += "; SameSite=lax"
+		w.Header().Set("Set-Cookie", c)
+
 		//w.Header().Set("Access-Control-Allow-Headers", allowedHeaders)
 		//w.Header().Set("Access-Control-Expose-Headers", "Authorization")
 		jsonFile, err := os.Open("src/assets/session-1234.json")
