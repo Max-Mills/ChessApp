@@ -1,8 +1,18 @@
 
+<script setup>
+import { useAuth0, AuthState } from "./utils/useAuth0";
+const { login, logout, initAuth } = useAuth0(AuthState);
 
+initAuth();
+</script>
 
 <template>
 <div id="app">
+	<div v-if="!AuthState.loading">
+    	<div v-if="AuthState.isAuthenticated">
+			<img style="position: absolute; top: 10px; right: 10px; border-radius: 80px; border: 5px solid black;" :src="AuthState.user.picture">
+    	</div>
+    </div>
   <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/chess">Chess Game</router-link> | 
@@ -23,6 +33,7 @@
 
 #nav {
   padding: 30px;
+
 }
 
 #nav a {

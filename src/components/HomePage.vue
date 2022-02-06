@@ -3,7 +3,6 @@ import { useAuth0, AuthState } from "../utils/useAuth0";
 const { login, logout, initAuth } = useAuth0(AuthState);
 
 initAuth();
-console.log(AuthState.user)
 </script>
 
 <template>
@@ -15,7 +14,7 @@ console.log(AuthState.user)
     </div>
 
     <div v-else>
-      <p> Welcome to Chess Online <strong>{{ AuthState.user.name }}</strong></p>
+      <p> Welcome to Chess Online <strong>{{ AuthState.user.nickname }}</strong></p>
       <button @click="logout()" class="btn btn-secondary">Logout</button>
     </div>
   </div>
