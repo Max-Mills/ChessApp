@@ -1,6 +1,6 @@
+// utils/useAuth0.js
 import createAuth0Client from '@auth0/auth0-spa-js';
 import { reactive } from 'vue';
-import { domain, clientId } from "../../auth_config.json";
 
 export const AuthState = reactive({
     user: null,
@@ -10,8 +10,9 @@ export const AuthState = reactive({
 });
 
 const config = {
-    domain: domain,
-    client_id: clientId
+    domain: "dev-s9lusa35.us.auth0.com",
+	client_id: "aJZSL2BB5IWu4EEDjeJYM80azlRQPicA"
+
 };
 
 export const useAuth0 = (state) => {

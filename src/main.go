@@ -67,10 +67,11 @@ func main() {
 
 	//fmt.Println(boardPlacements)
 
-	fmt.Println("Hello")
+	fmt.Println("Server starting")
 
 	fs := http.FileServer(http.Dir("dist"))
 	http.Handle("/", cors(fs))
+	http.Handle("/chess", cors(fs))
 	http.HandleFunc("/board", doBoard)
 	http.Handle("/assets", http.FileServer(http.Dir("src")))
 

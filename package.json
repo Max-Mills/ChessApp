@@ -7,8 +7,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@auth0/auth0-spa-js": "^1.19.3",
-    "vue": "^3.2.25",
+    "@auth0/auth0-spa-js": "^1.19.4",
+    "vue": "3.2.26",
     "vue-router": "^4.0.12"
   },
   "devDependencies": {

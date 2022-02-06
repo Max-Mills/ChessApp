@@ -1,4 +1,6 @@
 {
 	"domain": "dev-s9lusa35.us.auth0.com",
-	"clientId": "aJZSL2BB5IWu4EEDjeJYM80azlRQPicA"
+	"clientId": "aJZSL2BB5IWu4EEDjeJYM80azlRQPicA",
+	"audience": "",
+	"serverUrl": ""
   }
