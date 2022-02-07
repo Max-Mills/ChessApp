@@ -1,0 +1,1 @@
+import{_ as e}from"./index.8a0dd418.js";import{o as t,c as o}from"./vendor.0b7e7022.js";const c={name:"callback",mounted(){this.$auth.handleAuthentication().then(a=>{this.$router.push({name:"home"})})}},n={class:"callback"};function s(a,r,l,d,i,_){return t(),o("div",n,"Callback")}var p=e(c,[["render",s]]);export{p as default};

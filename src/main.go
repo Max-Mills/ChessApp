@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	//"github.com/gorilla/mux"
 )
 
 type board struct {
@@ -61,6 +62,7 @@ func cors(fs http.Handler) http.HandlerFunc {
 }
 
 func main() {
+	//router := mux.NewRouter()
 
 	//var boardPlacements []tile
 	//json.Unmarshal([]byte(byteValue), &boardPlacements)

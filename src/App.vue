@@ -1,6 +1,7 @@
 
 <script setup>
 import { useAuth0, AuthState } from "./utils/useAuth0";
+import LoginLogout from './components/LoginLogout.vue'
 const { login, logout, initAuth } = useAuth0(AuthState);
 
 initAuth();
@@ -8,14 +9,10 @@ initAuth();
 
 <template>
 <div id="app">
-	<div v-if="!AuthState.loading">
-    	<div v-if="AuthState.isAuthenticated">
-			<img style="position: absolute; top: 10px; right: 10px; border-radius: 80px; border: 5px solid black;" :src="AuthState.user.picture">
-    	</div>
-    </div>
+	<LoginLogout />
   <div id="nav">
     <router-link to="/">Home</router-link> |
-    <router-link to="/chess">Chess Game</router-link> | 
+    <router-link v-if="!AuthState.loading && AuthState.isAuthenticated" to="/chess">Chess Games</router-link> |
     <router-link to="/about">About</router-link>
   </div>
   <router-view />
